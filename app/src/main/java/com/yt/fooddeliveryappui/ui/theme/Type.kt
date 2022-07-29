@@ -26,6 +26,12 @@ val Typography = Typography(
         fontWeight = FontWeight.W600,
         fontSize = 18.sp,
         color = Color.White
+    ),
+    h3 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.W600,
+        fontSize = 15.sp,
+        color = Color.White
     )
 )
 
