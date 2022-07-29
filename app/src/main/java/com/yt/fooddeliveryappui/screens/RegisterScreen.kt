@@ -7,6 +7,7 @@ import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -63,7 +64,7 @@ object RegisterScreen : Screen {
                                         track1 = true
                                         track2 = false
                                     }
-                                })
+                                }.align(CenterHorizontally))
                                 if(track1)
                                 CommonLine(
                                     height = 1.dp,
@@ -79,7 +80,7 @@ object RegisterScreen : Screen {
                                         track1 = false
                                         track2 = true
                                     }
-                                })
+                                }.align(CenterHorizontally))
                                 if(track2)
                                     CommonLine(
                                         height = 1.dp,
