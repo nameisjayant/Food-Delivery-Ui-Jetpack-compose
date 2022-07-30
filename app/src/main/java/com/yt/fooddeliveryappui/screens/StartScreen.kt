@@ -1,5 +1,6 @@
 package com.yt.fooddeliveryappui.screens
 
+import android.app.Activity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -19,7 +20,7 @@ import com.yt.fooddeliveryappui.commonui.CommonButton
 import com.yt.fooddeliveryappui.commonui.Text65_800
 import com.yt.fooddeliveryappui.ui.theme.orange
 
-object StartScreen : Screen {
+object StartScreen: Screen {
 
     @Composable
     override fun Content() {

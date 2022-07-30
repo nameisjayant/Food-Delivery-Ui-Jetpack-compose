@@ -32,7 +32,31 @@ val Typography = Typography(
         fontWeight = FontWeight.W600,
         fontSize = 15.sp,
         color = Color.White
-    )
+    ),
+    h2 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.W700,
+        fontSize = 34.sp,
+        color = Color.White
+    ),
+    h4 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.W400,
+        fontSize = 17.sp,
+        color = Color.White
+    ),
+    h5 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.W600,
+        fontSize = 22.sp,
+        color = Color.White
+    ),
+    h6 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.W700,
+        fontSize = 17.sp,
+        color = Color.White
+    ),
 )
 
 

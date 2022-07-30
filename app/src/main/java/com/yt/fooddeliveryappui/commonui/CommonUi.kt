@@ -1,6 +1,7 @@
 package com.yt.fooddeliveryappui.commonui
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.indication
@@ -8,24 +9,25 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Card
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.Center
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.yt.fooddeliveryappui.ui.theme.Typography
-import com.yt.fooddeliveryappui.ui.theme.gray
-import com.yt.fooddeliveryappui.ui.theme.lightGray
-import com.yt.fooddeliveryappui.ui.theme.orange
+import com.yt.fooddeliveryappui.R
+import com.yt.fooddeliveryappui.model.Food
+import com.yt.fooddeliveryappui.ui.theme.*
 
 
 @Composable
@@ -38,12 +40,50 @@ fun Text65_800(
 }
 
 @Composable
+fun Text34_700(
+    text: String,
+    color: Color = Color.White,
+    modifier: Modifier = Modifier
+) {
+    Text(text = text, color = color, style = Typography.h2, modifier = modifier)
+}
+
+@Composable
+fun Text17_700(
+    text: String,
+    color: Color = Color.White,
+    modifier: Modifier = Modifier
+) {
+    Text(text = text, color = color, style = Typography.h6, modifier = modifier)
+}
+
+@Composable
+fun Text22_600(
+    text: String,
+    color: Color = Color.White,
+    textAlign: TextAlign = TextAlign.Center,
+    modifier: Modifier = Modifier
+) {
+    Text(text = text, color = color, style = Typography.h5, modifier = modifier, textAlign = textAlign)
+}
+
+
+@Composable
 fun Text17_600(
     text: String,
     color: Color = Color.White,
     modifier: Modifier = Modifier
 ) {
     Text(text = text, color = color, style = Typography.body2, modifier = modifier)
+}
+
+@Composable
+fun Text17_400(
+    text: String,
+    color: Color = Color.White,
+    modifier: Modifier = Modifier
+) {
+    Text(text = text, color = color, style = Typography.h4, modifier = modifier)
 }
 
 
@@ -67,11 +107,11 @@ fun Text15_600(
 
 @SuppressLint("UnnecessaryComposedModifier")
 @Composable
-inline fun Modifier.NoRippleEffect(crossinline onClick:()->Unit)  = composed {
-    clickable (
+inline fun Modifier.NoRippleEffect(crossinline onClick: () -> Unit) = composed {
+    clickable(
         indication = null,
-        interactionSource = remember { MutableInteractionSource()}
-    ){
+        interactionSource = remember { MutableInteractionSource() }
+    ) {
         onClick()
     }
 }
@@ -83,7 +123,7 @@ fun CommonButton(
     foregroundColor: Color = orange,
     backgroundColor: Color = Color.White,
     modifier: Modifier = Modifier,
-    onClick:()->Unit = {}
+    onClick: () -> Unit = {}
 ) {
 
     Card(
@@ -114,15 +154,17 @@ fun CommonButton(
 
 @Composable
 fun CommonLine(
-    width:Dp = 0.dp,
-    height:Dp = 0.dp,
+    width: Dp = 0.dp,
+    height: Dp = 0.dp,
     modifier: Modifier = Modifier,
     color: Color = orange
 ) {
-    Box(modifier = modifier
-        .width(width)
-        .height(height)
-        .background(color) )
+    Box(
+        modifier = modifier
+            .width(width)
+            .height(height)
+            .background(color)
+    )
 }
 
 @Composable
@@ -132,7 +174,8 @@ fun CommonTextField(
     keyboardType: KeyboardType = KeyboardType.Text
 ) {
 
-    TextField(value = text.value ,
+    TextField(
+        value = text.value,
         onValueChange = {
             text.value = it
         },
@@ -146,5 +189,130 @@ fun CommonTextField(
         maxLines = 1,
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType)
     )
+
+}
+
+@Composable
+fun CommonIconButton(
+    icon: Int,
+    tint: Color = Color.Unspecified,
+    size: Dp = 24.dp,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {}
+) {
+
+    IconButton(onClick = {
+        onClick()
+    }, modifier = modifier) {
+        Icon(
+            painter = painterResource(id = icon),
+            contentDescription = "",
+            modifier = Modifier.size(size),
+            tint = tint
+        )
+    }
+
+}
+
+@Composable
+fun CommonSearchBar(
+    text: MutableState<String>,
+    trailingIcon: Int = R.drawable.search,
+    backgroundColor: Color = searchBackground,
+    modifier: Modifier = Modifier,
+    isEnabled: Boolean = true
+) {
+
+    TextField(
+        value = text.value,
+        onValueChange = {
+            text.value = it
+        },
+        modifier = modifier
+            .clip(RoundedCornerShape(30.dp))
+            .fillMaxWidth(),
+        colors = TextFieldDefaults.textFieldColors(
+            backgroundColor = backgroundColor,
+            cursorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent,
+            focusedIndicatorColor = Color.Transparent,
+            disabledIndicatorColor = Color.Transparent,
+            disabledPlaceholderColor = placeholder,
+            disabledLabelColor = placeholder,
+            disabledLeadingIconColor = gray
+        ),
+        enabled = isEnabled,
+//        placeholder = { Text17_600(text = "Search", color = placeholder) },
+        label = { Text17_600(text = if (isEnabled) "" else "Search", color = placeholder) },
+        leadingIcon = {
+            Icon(
+                painterResource(id = trailingIcon),
+                contentDescription = "",
+                modifier = Modifier.size(18.dp),
+                tint = Color.Unspecified
+            )
+        }
+
+    )
+
+}
+
+@Composable
+fun TabBarListRow(
+    text: String,
+    selected: Boolean,
+    onClick: () -> Unit = {}
+) {
+    Column(
+        modifier = Modifier
+            .padding(horizontal = 5.dp)
+            .width(87.dp)
+            .NoRippleEffect {
+                onClick()
+            }
+    ) {
+        Text17_400(
+            text = text,
+            color = if (selected) orange else textColor,
+            modifier = Modifier.align(CenterHorizontally)
+        )
+        if (selected)
+            CommonLine(
+                height = 3.dp,
+                width = 87.dp,
+                modifier = Modifier
+                    .padding(top = 10.dp)
+                    .background(orange)
+            )
+    }
+}
+
+@Composable
+fun FoodEachRow(
+    food: Food
+) {
+
+    Card(
+        elevation = 2.dp,
+        shape = RoundedCornerShape(30.dp),
+        modifier = Modifier.padding(10.dp)
+    ) {
+        Box(modifier = Modifier.background(Color.White)) {
+            Column(
+                horizontalAlignment = CenterHorizontally,
+                modifier = Modifier.padding(vertical = 10.dp, horizontal = 20.dp)
+            ) {
+                Image(
+                    painter = painterResource(id = food.image),
+                    contentDescription = "",
+                    Modifier.size(164.dp)
+                )
+                Text22_600(text = food.name, color = Color.Black, modifier = Modifier.align(CenterHorizontally))
+                Spacer(modifier = Modifier.height(5.dp))
+                Text17_700(text = "$${food.price}", color = orange)
+                Spacer(modifier = Modifier.height(5.dp))
+            }
+        }
+    }
 
 }
