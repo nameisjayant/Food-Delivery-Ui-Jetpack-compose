@@ -13,15 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodDeliveryAppUi"
         tools:targetApi="31">
-        <activity android:name=".screens.activities.DetailActivity"
+        <activity
+            android:name=".screens.activities.CartActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".screens.activities.DetailActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".screens.activities.HomeActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            />
-        <activity android:name=".screens.activities.HomeActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.FoodDeliveryAppUi"
-            />
+            android:theme="@style/Theme.FoodDeliveryAppUi" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

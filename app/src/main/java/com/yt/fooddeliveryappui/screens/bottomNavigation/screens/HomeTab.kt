@@ -24,6 +24,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.yt.fooddeliveryappui.R
 import com.yt.fooddeliveryappui.commonui.*
 import com.yt.fooddeliveryappui.model.listOfFood
+import com.yt.fooddeliveryappui.screens.activities.CartActivity
 import com.yt.fooddeliveryappui.screens.activities.DetailActivity
 import com.yt.fooddeliveryappui.ui.theme.lightGray
 import com.yt.fooddeliveryappui.utils.launchActivity
@@ -64,7 +65,9 @@ fun HomeTab(
                         scaffoldState.drawerState.open()
                     }
                 }
-                CommonIconButton(icon = R.drawable.cart)
+                CommonIconButton(icon = R.drawable.cart){
+                    context.launchActivity<CartActivity> {  }
+                }
             }
             Row(
                 modifier = Modifier
