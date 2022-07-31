@@ -3,6 +3,6 @@
 
 <p align = "center">
 
-<img src = "app/ss.png"/>
+<img src = "app/src/main/res/drawable/ss.png"/>
 
 </p>
