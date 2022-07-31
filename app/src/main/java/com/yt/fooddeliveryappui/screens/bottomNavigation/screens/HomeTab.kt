@@ -33,26 +33,11 @@ import kotlinx.parcelize.RawValue
 import kotlinx.parcelize.WriteWith
 
 
+@Composable
+fun HomeTab(
+    scaffoldState: ScaffoldState
+)  {
 
-object HomeTab : Tab {
-
-    override val options: TabOptions
-        @Composable
-        get() {
-            val title = "Home"
-            val icon = rememberVectorPainter(Icons.Outlined.Home)
-            return remember {
-                TabOptions(
-                    0u,
-                    title,
-                    icon
-                )
-            }
-        }
-
-    @OptIn(ExperimentalPagerApi::class)
-    @Composable
-    override fun Content() {
         val context = LocalContext.current
         val scope = rememberCoroutineScope()
 
@@ -76,7 +61,7 @@ object HomeTab : Tab {
             ) {
                 CommonIconButton(icon = R.drawable.nav_bar){
                     scope.launch {
-                       // scaffoldState.drawerState.open()
+                        scaffoldState.drawerState.open()
                     }
                 }
                 CommonIconButton(icon = R.drawable.cart)
@@ -120,7 +105,6 @@ object HomeTab : Tab {
             if (currentListValue == "Foods")
                 FoodTabUi(context)
         }
-    }
 
 }
 

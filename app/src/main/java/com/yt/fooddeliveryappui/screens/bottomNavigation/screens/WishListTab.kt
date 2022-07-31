@@ -14,31 +14,15 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.yt.fooddeliveryappui.ui.theme.lightGray
 
-object WishListTab : Tab {
+@Composable
+fun WishListTab() {
 
-    override val options: TabOptions
-    @Composable
-        get() {
-            val title = "WishList"
-        val icon = rememberVectorPainter(Icons.Outlined.Favorite)
-        return remember {
-            TabOptions(
-                1u,
-                title,
-                icon
-            )
-        }
-        }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(lightGray)
+    ) {
 
-
-    @Composable
-    override fun Content() {
-        Column(
-            modifier = Modifier.fillMaxSize().background(lightGray)
-        ) {
-
-        }
     }
-
 
 }

@@ -16,29 +16,15 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import com.yt.fooddeliveryappui.ui.theme.lightGray
 
-object HistoryTab : Tab {
+@Composable
+fun HistoryTab() {
 
-    override val options: TabOptions
-        @Composable
-        get() {
-            val title = "History"
-            val icon = rememberVectorPainter(Icons.Outlined.Info)
-            return remember {
-                TabOptions(
-                    0u,
-                    title,
-                    icon
-                )
-            }
-        }
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(lightGray)
+    ) {
 
-    @Composable
-    override fun Content() {
-        Column(
-            modifier = Modifier.fillMaxSize().background(lightGray)
-        ) {
-
-        }
     }
 
 }

@@ -43,6 +43,15 @@ fun Text65_800(
 }
 
 @Composable
+fun Text13_400(
+    text: String,
+    color: Color = Color.White,
+    modifier: Modifier = Modifier
+) {
+    Text(text = text, color = color, style = Typography.subtitle1, modifier = modifier)
+}
+
+@Composable
 fun Text22_700(
     text: String,
     color: Color = Color.White,
@@ -378,7 +387,7 @@ fun DrawerContent(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 20.dp)
+            .padding(horizontal = 30.dp, vertical = 20.dp)
     ) {
         Icon(
             painter = painterResource(id = drawer.icon),
@@ -392,12 +401,11 @@ fun DrawerContent(
             Text17_600(text = drawer.name, color = Color.White)
             if (isline)
                 CommonLine(
-                    height = 1.dp,
+                    height = 0.2.dp,
                     modifier = Modifier
-                        .background(Color.White)
                         .fillMaxWidth()
-                        .padding(top = 20.dp)
-
+                        .padding(top = 20.dp),
+                    color = Color.White
                 )
         }
     }
@@ -413,7 +421,6 @@ fun CommonHeader(
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween
     ) {
         IconButton(onClick = {
             onClick()
@@ -425,8 +432,13 @@ fun CommonHeader(
             )
         }
 
-        Text18_600(text = text, color = Color.Black, modifier = Modifier.align(CenterVertically))
+        Text18_600(
+            text = text,
+            color = Color.Black,
+            modifier = Modifier
+                .align(CenterVertically)
+                .padding(start = 20.dp)
+        )
 
-        Box {}
     }
 }

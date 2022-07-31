@@ -78,5 +78,11 @@ val detailTypography =  Typography(
         fontSize = 15.sp,
         color = Color.White
     ),
+    subtitle1 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.W400,
+        fontSize = 13.sp,
+        color = Color.White
+    )
 )
 
