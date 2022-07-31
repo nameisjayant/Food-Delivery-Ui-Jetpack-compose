@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id("kotlin-parcelize")
 }
 
 android {
@@ -63,5 +64,9 @@ dependencies {
 
     implementation "cafe.adriel.voyager:voyager-navigator:$currentVersion"
     implementation "cafe.adriel.voyager:voyager-tab-navigator:$currentVersion"
+
+    //pager
+    implementation "com.google.accompanist:accompanist-pager:$accompainst"
+    implementation "com.google.accompanist:accompanist-pager-indicators:$accompainst"
 
 }

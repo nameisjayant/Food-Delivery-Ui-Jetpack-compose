@@ -1,6 +1,7 @@
 package com.yt.fooddeliveryappui.commonui
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -26,6 +27,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.yt.fooddeliveryappui.R
+import com.yt.fooddeliveryappui.model.Drawer
 import com.yt.fooddeliveryappui.model.Food
 import com.yt.fooddeliveryappui.ui.theme.*
 
@@ -37,6 +39,31 @@ fun Text65_800(
     modifier: Modifier = Modifier
 ) {
     Text(text = text, color = color, style = Typography.h1, modifier = modifier)
+}
+
+@Composable
+fun Text22_700(
+    text: String,
+    color: Color = Color.White,
+    modifier: Modifier = Modifier
+) {
+    Text(text = text, color = color, style = detailTypography.h2, modifier = modifier)
+}
+
+@Composable
+fun Text28_600(
+    text: String,
+    color: Color = Color.White,
+    modifier: Modifier = Modifier,
+    textAlign: TextAlign = TextAlign.Center
+) {
+    Text(
+        text = text,
+        color = color,
+        style = detailTypography.h2,
+        modifier = modifier,
+        textAlign = textAlign
+    )
 }
 
 @Composable
@@ -64,7 +91,13 @@ fun Text22_600(
     textAlign: TextAlign = TextAlign.Center,
     modifier: Modifier = Modifier
 ) {
-    Text(text = text, color = color, style = Typography.h5, modifier = modifier, textAlign = textAlign)
+    Text(
+        text = text,
+        color = color,
+        style = Typography.h5,
+        modifier = modifier,
+        textAlign = textAlign
+    )
 }
 
 
@@ -103,6 +136,15 @@ fun Text15_600(
     modifier: Modifier = Modifier
 ) {
     Text(text = text, color = color, style = Typography.h3, modifier = modifier)
+}
+
+@Composable
+fun Text15_400(
+    text: String,
+    color: Color = Color.White,
+    modifier: Modifier = Modifier
+) {
+    Text(text = text, color = color, style = detailTypography.body1, modifier = modifier)
 }
 
 @SuppressLint("UnnecessaryComposedModifier")
@@ -288,7 +330,8 @@ fun TabBarListRow(
 
 @Composable
 fun FoodEachRow(
-    food: Food
+    food: Food,
+    onClick: () -> Unit = {}
 ) {
 
     Card(
@@ -296,7 +339,12 @@ fun FoodEachRow(
         shape = RoundedCornerShape(30.dp),
         modifier = Modifier.padding(10.dp)
     ) {
-        Box(modifier = Modifier.background(Color.White)) {
+        Box(modifier = Modifier
+            .background(Color.White)
+            .NoRippleEffect {
+                onClick()
+            }
+        ) {
             Column(
                 horizontalAlignment = CenterHorizontally,
                 modifier = Modifier.padding(vertical = 10.dp, horizontal = 20.dp)
@@ -306,11 +354,50 @@ fun FoodEachRow(
                     contentDescription = "",
                     Modifier.size(164.dp)
                 )
-                Text22_600(text = food.name, color = Color.Black, modifier = Modifier.align(CenterHorizontally))
+                Text22_600(
+                    text = food.name,
+                    color = Color.Black,
+                    modifier = Modifier.align(CenterHorizontally)
+                )
                 Spacer(modifier = Modifier.height(5.dp))
                 Text17_700(text = "$${food.price}", color = orange)
                 Spacer(modifier = Modifier.height(5.dp))
             }
+        }
+    }
+
+}
+
+@Composable
+fun DrawerContent(
+    drawer: Drawer,
+    isline: Boolean = true
+) {
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 20.dp)
+    ) {
+        Icon(
+            painter = painterResource(id = drawer.icon),
+            contentDescription = "",
+            modifier = Modifier.size(24.dp),
+            tint = Color.Unspecified
+        )
+        Column(
+            modifier = Modifier.padding(start = 10.dp)
+        ) {
+            Text17_600(text = drawer.name, color = Color.White)
+            if (isline)
+                CommonLine(
+                    height = 1.dp,
+                    modifier = Modifier
+                        .background(Color.White)
+                        .fillMaxWidth()
+                        .padding(top = 20.dp)
+
+                )
         }
     }
 

@@ -59,4 +59,24 @@ val Typography = Typography(
     ),
 )
 
+val detailTypography =  Typography(
+    h1 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.W600,
+        fontSize = 28.sp,
+        color = Color.White
+    ),
+    h2 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.W700,
+        fontSize = 22.sp,
+        color = Color.White
+    ),
+    body1 =  TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.W400,
+        fontSize = 15.sp,
+        color = Color.White
+    ),
+)
 

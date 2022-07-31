@@ -1,8 +1,8 @@
 package com.yt.fooddeliveryappui.screens.activities
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -13,6 +13,8 @@ import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabNavigator
 import com.yt.fooddeliveryappui.BaseActivity
+import com.yt.fooddeliveryappui.commonui.DrawerContent
+import com.yt.fooddeliveryappui.model.drawerContent
 import com.yt.fooddeliveryappui.screens.bottomNavigation.screens.HistoryTab
 import com.yt.fooddeliveryappui.screens.bottomNavigation.screens.HomeTab
 import com.yt.fooddeliveryappui.screens.bottomNavigation.screens.ProfileTab
@@ -20,27 +22,42 @@ import com.yt.fooddeliveryappui.screens.bottomNavigation.screens.WishListTab
 import com.yt.fooddeliveryappui.ui.theme.gray
 import com.yt.fooddeliveryappui.ui.theme.lightGray
 import com.yt.fooddeliveryappui.ui.theme.orange
+import kotlinx.parcelize.RawValue
 
 class HomeActivity : BaseActivity() {
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
     override fun Content() {
+        val scaffoldState:  ScaffoldState = rememberScaffoldState()
         Surface(
-           modifier = Modifier.fillMaxSize().background(lightGray)
+            modifier = Modifier
+                .fillMaxSize()
+                .background(lightGray)
         ) {
-            TabNavigator(tab = HomeTab) {
+            TabNavigator(tab = HomeTab()) {
                 Scaffold(
                     bottomBar = {
                         BottomAppBar(
                             backgroundColor = lightGray,
                             elevation = 0.dp
                         ) {
-                            BottomTabItems(tab = HomeTab)
+                            BottomTabItems(tab = HomeTab())
                             BottomTabItems(tab = WishListTab)
                             BottomTabItems(tab = ProfileTab)
                             BottomTabItems(tab = HistoryTab)
                         }
-                    }
+                    },
+                    scaffoldState = scaffoldState,
+                    drawerContent = {
+
+                        drawerContent.forEach {
+                            DrawerContent(drawer = it, isline = it.name != "Security")
+                        }
+
+                    },
+                    drawerGesturesEnabled = false,
+                    drawerBackgroundColor = orange
                 ) {
                     CurrentTab()
                 }
