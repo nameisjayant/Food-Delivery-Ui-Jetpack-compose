@@ -17,6 +17,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
@@ -335,7 +336,7 @@ fun FoodEachRow(
 ) {
 
     Card(
-        elevation = 2.dp,
+        elevation = 0.dp,
         shape = RoundedCornerShape(30.dp),
         modifier = Modifier.padding(10.dp)
     ) {
@@ -401,4 +402,31 @@ fun DrawerContent(
         }
     }
 
+}
+
+
+@Composable
+fun CommonHeader(
+    text: String,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {}
+) {
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        IconButton(onClick = {
+            onClick()
+        }) {
+            Icon(
+                painter = painterResource(id = R.drawable.back), contentDescription = "",
+                tint = Color.Unspecified,
+                modifier = Modifier.size(24.dp)
+            )
+        }
+
+        Text18_600(text = text, color = Color.Black, modifier = Modifier.align(CenterVertically))
+
+        Box {}
+    }
 }

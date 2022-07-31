@@ -34,7 +34,7 @@ object StartScreen: Screen {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 10.dp)
+                    .padding(top = 20.dp)
                     .padding(horizontal = 20.dp)
             ) {
                 Icon(
@@ -55,12 +55,22 @@ object StartScreen: Screen {
                 .fillMaxWidth()
                 .padding(vertical = 20.dp)
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.onboard),
-                contentDescription = "",
-                modifier = Modifier.height(300.dp),
-               contentScale = ContentScale.Crop
-            )
+            Row(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.man_one),
+                    contentDescription = "",
+                    modifier = Modifier.size(260.dp).offset(x=-(30.dp),y=0.dp),
+                    contentScale = ContentScale.Crop
+                )
+                Image(
+                    painter = painterResource(id = R.drawable.man_two),
+                    contentDescription = "",
+                    modifier = Modifier.size(300.dp),
+                    contentScale = ContentScale.Crop
+                )
+            }
             Spacer(modifier = Modifier.height(20.dp))
             CommonButton(text = "Get Started"){
                 navigator += RegisterScreen
