@@ -173,7 +173,6 @@ fun CommonTextField(
     modifier: Modifier = Modifier,
     keyboardType: KeyboardType = KeyboardType.Text
 ) {
-
     TextField(
         value = text.value,
         onValueChange = {
@@ -181,10 +180,10 @@ fun CommonTextField(
         },
         modifier = modifier.fillMaxWidth(),
         colors = TextFieldDefaults.textFieldColors(
+            textColor = LocalContentColor.current,
             backgroundColor = lightGray,
             unfocusedIndicatorColor = gray,
             focusedIndicatorColor = Color.Black,
-            textColor = Color.Black
         ),
         maxLines = 1,
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType)

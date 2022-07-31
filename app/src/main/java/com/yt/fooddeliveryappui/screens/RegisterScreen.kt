@@ -10,6 +10,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -165,6 +167,12 @@ object RegisterScreen : Screen {
         onclick: () -> Unit
     ) {
 
+        val focusRequester = FocusRequester()
+
+        LaunchedEffect(key1 = Unit){
+            focusRequester.requestFocus()
+        }
+
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -176,7 +184,7 @@ object RegisterScreen : Screen {
                     .padding(vertical = 10.dp)
             ) {
                 Text15_600(text = "Email", color = gray)
-                CommonTextField(text = email)
+                CommonTextField(text = email, modifier = Modifier.focusRequester(focusRequester))
             }
 
             Column(
@@ -185,7 +193,10 @@ object RegisterScreen : Screen {
                     .padding(vertical = 10.dp)
             ) {
                 Text15_600(text = "Password", color = gray)
-                CommonTextField(text = password, keyboardType = KeyboardType.Password)
+                CommonTextField(
+                    text = password,
+                    keyboardType = KeyboardType.Password,
+                )
             }
 
             Spacer(modifier = Modifier.height(10.dp))
