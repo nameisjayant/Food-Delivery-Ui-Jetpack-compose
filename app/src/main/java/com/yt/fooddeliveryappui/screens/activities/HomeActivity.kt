@@ -35,14 +35,14 @@ class HomeActivity : BaseActivity() {
                 .fillMaxSize()
                 .background(lightGray)
         ) {
-            TabNavigator(tab = HomeTab()) {
+            TabNavigator(tab = HomeTab) {
                 Scaffold(
                     bottomBar = {
-                        BottomAppBar(
+                        BottomNavigation(
                             backgroundColor = lightGray,
                             elevation = 0.dp
                         ) {
-                            BottomTabItems(tab = HomeTab())
+                            BottomTabItems(tab = HomeTab)
                             BottomTabItems(tab = WishListTab)
                             BottomTabItems(tab = ProfileTab)
                             BottomTabItems(tab = HistoryTab)

@@ -32,10 +32,9 @@ import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
 import kotlinx.parcelize.WriteWith
 
-@Parcelize
-class HomeTab(
-  //  private val scaffoldState: @RawValue ScaffoldState
-) : Tab , Parcelable{
+
+
+object HomeTab : Tab {
 
     override val options: TabOptions
         @Composable
